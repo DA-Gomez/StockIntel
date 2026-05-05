@@ -1,0 +1,20 @@
+services: # each service is a container (postgres)
+  postgres:
+    image: postgres:16-alpine
+    container_name: stockintel-postgres
+    environment: #creates user based on these vars on first boot
+      POSTGRES_USER: stockintel
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: stockintel
+    ports:
+      - "5432:5432"
+    volumes: #saves the database from deletion when container is deleted
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stockintel -d stockintel"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
