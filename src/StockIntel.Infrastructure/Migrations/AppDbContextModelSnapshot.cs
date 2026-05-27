@@ -26,25 +26,31 @@ namespace StockIntel.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("email");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(512)
-                        .HasColumnType("character varying(512)");
+                        .HasColumnType("character varying(512)")
+                        .HasColumnName("password_hash");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_users");
 
                     b.HasIndex("Email")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("ix_users_email");
 
                     b.ToTable("users", (string)null);
                 });
@@ -53,22 +59,28 @@ namespace StockIntel.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_watchlists");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_watchlists_user_id");
 
                     b.ToTable("watchlists", (string)null);
                 });
@@ -77,25 +89,32 @@ namespace StockIntel.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("AddedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("added_at");
 
                     b.Property<string>("Ticker")
                         .IsRequired()
                         .HasMaxLength(5)
-                        .HasColumnType("character varying(5)");
+                        .HasColumnType("character varying(5)")
+                        .HasColumnName("ticker");
 
                     b.Property<Guid>("WatchlistId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("watchlist_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_watchlist_items");
 
-                    b.HasIndex("WatchlistId");
+                    b.HasIndex("WatchlistId")
+                        .HasDatabaseName("ix_watchlist_items_watchlist_id");
 
                     b.HasIndex("WatchlistId", "Ticker")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("ix_watchlist_items_watchlist_id_ticker");
 
                     b.ToTable("watchlist_items", (string)null);
                 });
@@ -106,7 +125,8 @@ namespace StockIntel.Infrastructure.Migrations
                         .WithMany("Items")
                         .HasForeignKey("WatchlistId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_watchlist_items_watchlists_watchlist_id");
                 });
 
             modelBuilder.Entity("StockIntel.Domain.Entities.Watchlist", b =>

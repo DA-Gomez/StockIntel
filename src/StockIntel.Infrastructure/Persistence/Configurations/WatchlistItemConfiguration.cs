@@ -9,8 +9,6 @@ public class WatchlistItemConfiguration : IEntityTypeConfiguration<WatchlistItem
 {
   public void Configure(EntityTypeBuilder<WatchlistItem> builder)
   {
-    builder.ToTable("watchlist_items");
-
     builder.HasKey(i => i.Id);
     
     builder.HasIndex(i => i.WatchlistId);

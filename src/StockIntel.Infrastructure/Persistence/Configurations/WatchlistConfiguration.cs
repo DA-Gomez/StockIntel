@@ -8,8 +8,6 @@ public class WatchlistConfiguration : IEntityTypeConfiguration<Watchlist>
 {
   public void Configure(EntityTypeBuilder<Watchlist> builder)
   {
-    builder.ToTable("watchlists");
-
     builder.HasKey(w => w.Id);
     
     builder.Property(w => w.UserId).IsRequired();
