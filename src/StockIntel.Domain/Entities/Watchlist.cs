@@ -10,7 +10,7 @@ public class Watchlist {
   public string Name { get; private set; } = string.Empty;
   public DateTime CreatedAt { get; private set; }
 
-  public IReadOnlyCollection<WatchlistItem> Items => _items.AsReadOnly();
+  public IReadOnlyCollection<WatchlistItem> Items => _items;
 
   private Watchlist() { } //entity framework core
 

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StockIntel.Infrastructure.Persistence;
@@ -24,6 +25,11 @@ public static class DependencyInjection
     services.AddScoped<IUserRepository, UserRepository>();
     services.AddScoped<IUnitOfWork, UnitOfWork>();
     services.AddSingleton<IPasswordHasher, BCryptPasswordHasher>();
+
+    services.Configure<JwtOptions>(configuration.GetSection(JwtOptions.SectionName));
+    services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+
+    services.AddScoped<IWatchlistRepository, WatchlistRepository>();
 
     return services;
   }

@@ -9,6 +9,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
   public void Configure(EntityTypeBuilder<User> builder)
   {
     builder.HasKey(u => u.Id);
+    builder.Property(u => u.Id).ValueGeneratedNever();//since im controlling the key gen, this stops EF from gen the value
 
     builder.Property(u => u.Email).IsRequired().HasMaxLength(256);
 

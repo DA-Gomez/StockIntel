@@ -9,16 +9,19 @@ public class WatchlistConfiguration : IEntityTypeConfiguration<Watchlist>
   public void Configure(EntityTypeBuilder<Watchlist> builder)
   {
     builder.HasKey(w => w.Id);
+    builder.Property(i => i.Id).ValueGeneratedNever();
     
     builder.Property(w => w.UserId).IsRequired();
     builder.HasIndex(w => w.UserId);
 
     builder.Property(w => w.Name).IsRequired().HasMaxLength(100);
 
+    builder.Property(w => w.CreatedAt).IsRequired();
+
     //map the private _items field to the Items navigation
     builder.HasMany(w => w.Items).WithOne().HasForeignKey(i => i.WatchlistId).OnDelete(DeleteBehavior.Cascade);
 
     //tell EF to use the backing field instead of the property
-    builder.Metadata.FindNavigation(nameof(Watchlist.Items))!.SetPropertyAccessMode(PropertyAccessMode.Field);
+    builder.Metadata.FindNavigation(nameof(Watchlist.Items))!.SetPropertyAccessMode(PropertyAccessMode.Field);    
   }
 }

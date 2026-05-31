@@ -10,6 +10,7 @@ public class WatchlistItemConfiguration : IEntityTypeConfiguration<WatchlistItem
   public void Configure(EntityTypeBuilder<WatchlistItem> builder)
   {
     builder.HasKey(i => i.Id);
+    builder.Property(w => w.Id).ValueGeneratedNever();
     
     builder.HasIndex(i => i.WatchlistId);
 
