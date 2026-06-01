@@ -80,3 +80,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
+//allows WebApplicationFactory<Program> to reference the testing API's entry point
