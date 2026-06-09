@@ -14,10 +14,10 @@ jobs: #test' and 'docker' run on Ubuntu VMs. uses Testcontainers automatically
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up .NET 8
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 8.0.x
 
@@ -36,7 +36,7 @@ jobs: #test' and 'docker' run on Ubuntu VMs. uses Testcontainers automatically
     needs: test # needs test means itll only run if the tests passed
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
