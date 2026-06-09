@@ -20,7 +20,10 @@ public class PostgresFixture : IAsyncLifetime//xUnit's interface for async setup
     await _container.StartAsync();
 
     //apply migrations to the test db
-    var options = new DbContextOptionsBuilder<AppDbContext>().UseNpgsql(ConnectionString).Options;
+    var options = new DbContextOptionsBuilder<AppDbContext>()
+      .UseNpgsql(ConnectionString)
+      .UseSnakeCaseNamingConvention()
+      .Options;
 
     using var db = new AppDbContext(options);
     await db.Database.MigrateAsync();
