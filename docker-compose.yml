@@ -16,5 +16,23 @@ services: # each service is a container (postgres)
       timeout: 5s
       retries: 5
 
+  api:
+    build: .
+    container_name: stockintel-api
+    depends_on:
+      postgres:
+        condition: service_healthy # API waits for postgres to be healthy before starting
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Postgres: "Host=postgres;Port=5432;Database=stockintel;Username=stockintel;Password=localdev" #connection string
+      Jwt__Issuer: stockintel-api
+      Jwt__Audience: stockintel-clients
+      Jwt__SigningKey: "this-is-a-development-only-signing-key-at-least-32-chars"
+      Jwt__ExpirationMinutes: "60"
+    ports:
+      - "8080:8080"
+
 volumes:
   postgres_data:
+
+# double underscore is the convention for nested config keys. ConnectionStrings__Postgres -> turns into ConnectionStrings:Postgres internally
