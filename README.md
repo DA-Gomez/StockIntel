@@ -1,4 +1,28 @@
-### Run 
+### Running locally
+
+Prerequisites: Docker Desktop, .NET 8 SDK, Git.
+
+```bash
+git clone <link>
+cd stockintel
+docker compose up --build
+```
+`docker compose up` starts all services defined in `docker-compose.yml`.
+`--build` rebuilds the API's Docker image from your current source code before starting,
+use it whenever theres code changes. Don't use it if you just want to restart without rebuilding.
+
+The API is available at http://localhost:8080/swagger once both containers are healthy.
+
+To stop everything:
+
+```bash
+docker compose down
+```
+
+This stops and removes the containers. Your data is not deleted unless you explicitly pass `--volumes`.
+
+
+
 
 Sanity check
 
