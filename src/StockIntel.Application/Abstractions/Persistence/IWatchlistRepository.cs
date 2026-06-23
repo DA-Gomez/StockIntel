@@ -1,4 +1,4 @@
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users.Watchlists;
 
 namespace StockIntel.Application.Abstractions.Persistence;
 

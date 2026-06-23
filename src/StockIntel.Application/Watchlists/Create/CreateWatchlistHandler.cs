@@ -1,7 +1,7 @@
 using StockIntel.Application.Abstractions.Authentication;
 using StockIntel.Application.Abstractions.Persistence;
 using StockIntel.Application.Common;
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users.Watchlists;
 
 namespace StockIntel.Application.Watchlists.Create;
 

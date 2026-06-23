@@ -1,7 +1,7 @@
 using FluentAssertions;
-using StockIntel.Domain.ValueObjects;
+using StockIntel.Domain.Common;
 
-namespace StockIntel.Domain.UnitTests.ValueObjects;
+namespace StockIntel.Domain.UnitTests.Common;
 
 public class TickerTests
 {

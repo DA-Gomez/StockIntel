@@ -1,4 +1,4 @@
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users;
 
 namespace StockIntel.Application.Abstractions.Security;
 

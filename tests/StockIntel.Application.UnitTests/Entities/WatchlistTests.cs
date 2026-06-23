@@ -1,6 +1,6 @@
 using FluentAssertions;
-using StockIntel.Domain.Entities;
-using StockIntel.Domain.ValueObjects;
+using StockIntel.Domain.Users.Watchlists;
+using StockIntel.Domain.Common;
 
 namespace StockIntel.Domain.UnitTests.Entities;
 

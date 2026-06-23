@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StockIntel.Application.Abstractions.Persistence;
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users.Watchlists;
 
 namespace StockIntel.Infrastructure.Persistence.Repositories;
 

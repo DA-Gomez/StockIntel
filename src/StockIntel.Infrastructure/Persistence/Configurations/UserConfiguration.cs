@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users;
 
 namespace StockIntel.Infrastructure.Persistence.Configurations;
 

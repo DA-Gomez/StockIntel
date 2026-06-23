@@ -1,4 +1,4 @@
-namespace StockIntel.Domain.ValueObjects;
+namespace StockIntel.Domain.Common;
 
 public sealed record Ticker { //record instead of class
   public string Symbol { get; }

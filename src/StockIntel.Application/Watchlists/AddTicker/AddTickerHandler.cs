@@ -1,7 +1,8 @@
 using StockIntel.Application.Abstractions.Authentication;
 using StockIntel.Application.Abstractions.Persistence;
 using StockIntel.Application.Common;
-using StockIntel.Domain.ValueObjects;
+using StockIntel.Domain.Common
+;
 namespace StockIntel.Application.Watchlists.AddTicker;
 
 public class AddTickerHandler : ICommandHandler<AddTickerCommand, Unit>

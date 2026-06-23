@@ -1,5 +1,5 @@
 using FluentAssertions;
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users;
 
 namespace StockIntel.Domain.UnitTests;
 

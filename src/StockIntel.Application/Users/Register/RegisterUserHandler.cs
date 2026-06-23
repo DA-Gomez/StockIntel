@@ -2,7 +2,7 @@ using FluentValidation;
 using StockIntel.Application.Abstractions.Persistence;
 using StockIntel.Application.Abstractions.Security;
 using StockIntel.Application.Common;
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users;
 
 namespace StockIntel.Application.Users.Register;
 

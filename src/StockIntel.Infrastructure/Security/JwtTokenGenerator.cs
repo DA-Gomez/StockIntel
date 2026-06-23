@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Win32.SafeHandles;
 using StockIntel.Application.Abstractions.Security;
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users;
 
 namespace StockIntel.Infrastructure.Security;
 

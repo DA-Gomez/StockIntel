@@ -1,4 +1,4 @@
-namespace StockIntel.Domain.Entities;
+namespace StockIntel.Domain.Users;
 
 public class User
 {

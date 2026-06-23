@@ -1,6 +1,6 @@
-using StockIntel.Domain.ValueObjects;
+using StockIntel.Domain.Common;
 
-namespace StockIntel.Domain.Entities;
+namespace StockIntel.Domain.Users.Watchlists;
 
 public class WatchlistItem
 {

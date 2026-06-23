@@ -5,7 +5,7 @@ using NSubstitute;
 using StockIntel.Application.Abstractions.Persistence;
 using StockIntel.Application.Abstractions.Security;
 using StockIntel.Application.Users.Register;
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users;
 
 namespace StockIntel.Application.UnitTests.Users;
 

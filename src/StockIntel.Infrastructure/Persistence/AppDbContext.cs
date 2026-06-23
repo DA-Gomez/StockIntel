@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using StockIntel.Domain.Entities;
+using StockIntel.Domain.Users;
+using StockIntel.Domain.Users.Watchlists;
 
 namespace StockIntel.Infrastructure.Persistence;
 

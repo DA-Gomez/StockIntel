@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using StockIntel.Domain.Entities;
-using StockIntel.Domain.ValueObjects;
+using StockIntel.Domain.Users.Watchlists;
+using StockIntel.Domain.Common;
 
 namespace StockIntel.Infrastructure.Persistence.Configurations;
 
