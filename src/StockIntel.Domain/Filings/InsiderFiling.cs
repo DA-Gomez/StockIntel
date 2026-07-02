@@ -4,8 +4,8 @@ public class InsiderFiling
 {
   private readonly List<InsiderTransaction> _transactions = new();
   
-  public Guid Id { set; private get; }
-  public Guid CompanyId { set; private get; }
+  public Guid Id { get; private set; }
+  public Guid CompanyId { get; private set; }
 
   //Canonical form: 0001214156-26-000043 (dashed) Globally unique in EDGAR
   public string AccessionNumber { get; private set; } = string.Empty;
