@@ -2,18 +2,18 @@ namespace StockIntel.Domain.Filings;
 
 public class InsiderTransaction
 {
-  public Guid Id { set; private get; }
-  public Guid FilingId { set; private get; }
-  public DateOnly TransactionDate { set; private get; }
+  public Guid Id { get; private set; }
+  public Guid FilingId { get; private set; }
+  public DateOnly TransactionDate { get; private set; }
 
   // Raw SEC transaction code, stored as is. Known values include P, S, A, M, G, F
-  public string Code { set; private get; } = string.Empty;
+  public string Code { get; private set; } = string.Empty;
   
-  public decimal Shares { set; private get; }
-  public decimal? PricePerShare { set; private get; } //can be null because of gifts
-  public bool IsAcquisition { set; private get; } // EDGAR's A/D flag
-  public decimal? SharesOwnedAfter { set; private get; }
-  public bool IsDirectOwnership { set; private get; }
+  public decimal Shares { get; private set; }
+  public decimal? PricePerShare { get; private set; } //can be null because of gifts
+  public bool IsAcquisition { get; private set; } // EDGAR's A/D flag
+  public decimal? SharesOwnedAfter { get; private set; }
+  public bool IsDirectOwnership { get; private set; }
 
   // interpretation here, not in storage
   public bool IsOpenMarketPurchase => Code == "P" && IsAcquisition;
