@@ -1,8 +1,8 @@
 namespace StockIntel.Domain.Filings;
 
-public class InsiderFiling
+public class InsiderFilings
 {
-  private readonly List<InsiderTransaction> _transactions = new();
+  private readonly List<InsiderTransactions> _transactions = new();
   
   public Guid Id { get; private set; }
   public Guid CompanyId { get; private set; }
@@ -20,11 +20,11 @@ public class InsiderFiling
   public string? OfficerTitle { get; private set; }
 
   public DateTime IngestedAt { get; private set; }
-  public IReadOnlyCollection<InsiderTransaction> Transactions => _transactions;
+  public IReadOnlyCollection<InsiderTransactions> Transactions => _transactions;
 
-  private InsiderFiling() {} //ef core
+  private InsiderFilings() {} //ef core
 
-  public static InsiderFiling Create(
+  public static InsiderFilings Create(
     Guid companyId,
     string accessionNumber,
     DateOnly filingDate,
@@ -40,7 +40,7 @@ public class InsiderFiling
     if (string.IsNullOrWhiteSpace(insiderName)) 
       throw new ArgumentException("InsiderName is required", nameof(insiderName));
 
-    return new InsiderFiling
+    return new InsiderFilings
     {
       Id = Guid.NewGuid(),
       CompanyId = companyId,
@@ -80,7 +80,7 @@ public class InsiderFiling
     decimal? sharesOwnedAfter,
     bool isDirectOwnership)
   {
-    _transactions.Add(new InsiderTransaction(
+    _transactions.Add(new InsiderTransactions(
       Id, transactionDate, code, shares, pricePerShare,
       isAcquisition, sharesOwnedAfter, isDirectOwnership));
   }

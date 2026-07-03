@@ -3,7 +3,7 @@ using StockIntel.Domain.Filings;
 
 namespace StockIntel.Domain.UnitTests.Filings;
 
-public class InsiderTransactionTests
+public class InsiderTransactionsTests
 {
   [Fact]
   public void Open_market_purchase_is_classified_from_code_and_direction()
@@ -27,8 +27,8 @@ public class InsiderTransactionTests
   }    
   
   // a valid filing with realistic defaults. Transactions have internal constructor
-  private static InsiderFiling CreateFiling() =>
-    InsiderFiling.Create(
+  private static InsiderFilings CreateFiling() =>
+    InsiderFilings.Create(
       companyId: Guid.NewGuid(),
       accessionNumber: "0001214156-26-000043",
       filingDate: new DateOnly(2026, 4, 3),
