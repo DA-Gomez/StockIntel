@@ -31,6 +31,8 @@ public static class DependencyInjection
 
     services.AddScoped<IWatchlistRepository, WatchlistRepository>();
 
+    services.AddEdgar();
+
     return services;
   }
 }

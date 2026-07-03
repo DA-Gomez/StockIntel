@@ -31,6 +31,10 @@ services: # each service is a container (postgres)
       Jwt__ExpirationMinutes: "60"
     ports:
       - "8080:8080"
+  
+  Edgar:
+    Edgar__UserAgent: "StockIntel/0.2 (diego.a.gomez.ruiz@example.com)"
+    Edgar__RequestsPerSecond: 5
 
 volumes:
   postgres_data:
