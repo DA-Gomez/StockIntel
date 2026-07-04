@@ -1,6 +1,6 @@
 namespace StockIntel.Domain.Filings;
 
-public class InsiderFilings
+public class InsiderFiling
 {
   private readonly List<InsiderTransactions> _transactions = new();
   
@@ -22,9 +22,9 @@ public class InsiderFilings
   public DateTime IngestedAt { get; private set; }
   public IReadOnlyCollection<InsiderTransactions> Transactions => _transactions;
 
-  private InsiderFilings() {} //ef core
+  private InsiderFiling() {} //ef core
 
-  public static InsiderFilings Create(
+  public static InsiderFiling Create(
     Guid companyId,
     string accessionNumber,
     DateOnly filingDate,
@@ -40,7 +40,7 @@ public class InsiderFilings
     if (string.IsNullOrWhiteSpace(insiderName)) 
       throw new ArgumentException("InsiderName is required", nameof(insiderName));
 
-    return new InsiderFilings
+    return new InsiderFiling
     {
       Id = Guid.NewGuid(),
       CompanyId = companyId,

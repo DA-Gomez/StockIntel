@@ -27,8 +27,8 @@ public class InsiderTransactionsTests
   }    
   
   // a valid filing with realistic defaults. Transactions have internal constructor
-  private static InsiderFilings CreateFiling() =>
-    InsiderFilings.Create(
+  private static InsiderFiling CreateFiling() =>
+    InsiderFiling.Create(
       companyId: Guid.NewGuid(),
       accessionNumber: "0001214156-26-000043",
       filingDate: new DateOnly(2026, 4, 3),

@@ -18,8 +18,8 @@ public static class EdgarServiceCollectionExtensions
     services.AddSingleton<EdgarRateLimiter>();
     services.AddTransient<RateLimitingHandler>();
 
-    //named client. used by the singleton dir via IHttpClientFactory
-    var directory = services.AddHttpClient<IInsiderFilingSource, EdgarInsiderFilingSource>()
+    //named client. used by the singleton CompanyDirectory via IHttpClientFactory
+    var directory = services.AddHttpClient(EdgarHttp.DirectoryClientName)
       .ConfigureHttpClient(ApplyEdgarDefualts)
       .ConfigurePrimaryHttpMessageHandler(CreatePrimaryHandler);
     directory.AddStandardResilienceHandler();
@@ -54,7 +54,7 @@ public static class EdgarServiceCollectionExtensions
 
 internal static class EdgarHttp
 {
-  public const string DirectoryClientHane = "edgar-directory";
-  public const string CompanyTickerUrl = "https://www.sec.gov/files/company_tickers.json";
+  public const string DirectoryClientName = "edgar-directory";
+  public const string CompanyTickersUrl = "https://www.sec.gov/files/company_tickers.json";
   public static string SubmissionsUrl(string cik) => $"https://data.sec.gov/submissions/CIK{cik}.json";
 }

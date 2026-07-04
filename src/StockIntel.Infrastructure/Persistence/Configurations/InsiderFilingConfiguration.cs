@@ -5,9 +5,9 @@ using StockIntel.Domain.Filings;
 
 namespace StockIntel.Infrastructure.Persistence.Configurations;
 
-public class InsiderFilingsConfiguration : IEntityTypeConfiguration<InsiderFilings>
+public class InsiderFilingConfiguration : IEntityTypeConfiguration<InsiderFiling>
 {
-  public void Configure(EntityTypeBuilder<InsiderFilings> builder)
+  public void Configure(EntityTypeBuilder<InsiderFiling> builder)
   {
     builder.HasKey(f => f.Id);
     builder.Property(f => f.Id).ValueGeneratedNever();

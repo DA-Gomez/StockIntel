@@ -83,7 +83,7 @@ namespace StockIntel.Infrastructure.Migrations
                     b.ToTable("company_ticker", (string)null);
                 });
 
-            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderFilings", b =>
+            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderFiling", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
@@ -137,16 +137,16 @@ namespace StockIntel.Infrastructure.Migrations
                         .HasColumnName("officer_title");
 
                     b.HasKey("Id")
-                        .HasName("pk_insider_filings");
+                        .HasName("pk_insider_filing");
 
                     b.HasIndex("AccessionNumber")
                         .IsUnique()
-                        .HasDatabaseName("ix_insider_filings_accession_number");
+                        .HasDatabaseName("ix_insider_filing_accession_number");
 
                     b.HasIndex("CompanyId", "FilingDate")
-                        .HasDatabaseName("ix_insider_filings_company_id_filing_date");
+                        .HasDatabaseName("ix_insider_filing_company_id_filing_date");
 
-                    b.ToTable("insider_filings", (string)null);
+                    b.ToTable("insider_filing", (string)null);
                 });
 
             modelBuilder.Entity("StockIntel.Domain.Filings.InsiderTransactions", b =>
@@ -308,24 +308,24 @@ namespace StockIntel.Infrastructure.Migrations
                         .HasConstraintName("fk_company_ticker_company_company_id");
                 });
 
-            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderFilings", b =>
+            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderFiling", b =>
                 {
                     b.HasOne("StockIntel.Domain.Filings.Company", null)
                         .WithMany()
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_insider_filings_company_company_id");
+                        .HasConstraintName("fk_insider_filing_company_company_id");
                 });
 
             modelBuilder.Entity("StockIntel.Domain.Filings.InsiderTransactions", b =>
                 {
-                    b.HasOne("StockIntel.Domain.Filings.InsiderFilings", null)
+                    b.HasOne("StockIntel.Domain.Filings.InsiderFiling", null)
                         .WithMany("Transactions")
                         .HasForeignKey("FilingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_insider_transactions_insider_filings_filing_id");
+                        .HasConstraintName("fk_insider_transactions_insider_filing_filing_id");
                 });
 
             modelBuilder.Entity("StockIntel.Domain.Users.Watchlists.WatchlistItem", b =>
@@ -343,7 +343,7 @@ namespace StockIntel.Infrastructure.Migrations
                     b.Navigation("Tickers");
                 });
 
-            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderFilings", b =>
+            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderFiling", b =>
                 {
                     b.Navigation("Transactions");
                 });
