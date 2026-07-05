@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using StockIntel.Domain.Filings;
 using StockIntel.Domain.Users;
 using StockIntel.Domain.Users.Watchlists;
 
@@ -11,6 +12,8 @@ public class AppDbContext : DbContext //main class that talks to the database.
   public DbSet<User> Users => Set<User>();
   public DbSet<Watchlist> Watchlists => Set<Watchlist>();
   public DbSet<WatchlistItem> WatchlistItems => Set<WatchlistItem>();
+  public DbSet<Company> Companies => Set<Company>();
+  public DbSet<InsiderFiling> InsiderFilings => Set<InsiderFiling>();
 
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)

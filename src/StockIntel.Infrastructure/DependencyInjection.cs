@@ -7,6 +7,8 @@ using StockIntel.Infrastructure.Persistence.Repositories;
 using StockIntel.Infrastructure.Security;
 using StockIntel.Application.Abstractions.Persistence;
 using StockIntel.Application.Abstractions.Security;
+using StockIntel.Application.Abstractions.Filings;
+using StockIntelk.Infrastructure.Persistence.Repositories;
 
 namespace StockIntel.Infrastructure;
 
@@ -32,6 +34,9 @@ public static class DependencyInjection
     services.AddScoped<IWatchlistRepository, WatchlistRepository>();
 
     services.AddEdgar();
+    
+    services.AddScoped<ICompanyRepository, CompanyRepository>();
+    services.AddScoped<IInsiderFilingRepository, InsiderFilingRepository>();
 
     return services;
   }
