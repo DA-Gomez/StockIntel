@@ -3,6 +3,7 @@ namespace StockIntel.Application.Abstractions.Filings;
 
 public record ParsedForm4(
   string IssuerCik,
+  string InsiderCik,
   string InsiderName,
   bool IsDirector,
   bool IsOfficer,

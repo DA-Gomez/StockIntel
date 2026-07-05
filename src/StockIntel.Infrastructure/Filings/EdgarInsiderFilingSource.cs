@@ -45,6 +45,13 @@ public sealed class EdgarInsiderFilingSource : IInsiderFilingSource
     return results;
   }
 
+  public async Task<ParsedForm4> GetFilingAsync(FilingReference reference, CancellationToken cancellationToken)
+  {
+    var url = EdgarHttp.FilingDocumentUrl(reference);
+    var xml = await _http.GetStringAsync(url, cancellationToken);// throws on non 2xx
+    return Form4Parser.Parse(xml);
+  }
+
   // Deserialization targets for the slice of the response we actually read.
   // Modeling only what you consume is deliberate: unknown JSON properties are
   // ignored by default, so the SEC adding fields never breaks us. Postel again.

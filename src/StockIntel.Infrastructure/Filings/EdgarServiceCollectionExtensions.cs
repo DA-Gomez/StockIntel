@@ -57,4 +57,20 @@ internal static class EdgarHttp
   public const string DirectoryClientName = "edgar-directory";
   public const string CompanyTickersUrl = "https://www.sec.gov/files/company_tickers.json";
   public static string SubmissionsUrl(string cik) => $"https://data.sec.gov/submissions/CIK{cik}.json";
+
+  public static string FilingDocumentUrl(FilingReference reference)
+  {
+    var cik = reference.Cik.TrimStart('0');// Archives wants unpadded cik and undashed accession num
+    var accession = reference.AccessionNumber.Replace("-", "");
+    var document = StripRenderedPrefix(reference.PrimaryDocument);
+    return $"https://www.sec.gov/Archives/edgar/data/{cik}/{accession}/{document}";
+  }
+
+  public static string StripRenderedPrefix(string primaryDocument)
+  {
+    var slash = primaryDocument.IndexOf('/');
+    return slash >= 0 && primaryDocument.StartsWith("xsl", StringComparison.OrdinalIgnoreCase)
+      ? primaryDocument[(slash + 1)..]
+      : primaryDocument;
+  }
 }
