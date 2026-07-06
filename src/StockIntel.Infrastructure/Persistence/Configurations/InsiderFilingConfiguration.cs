@@ -9,6 +9,8 @@ public class InsiderFilingConfiguration : IEntityTypeConfiguration<InsiderFiling
 {
   public void Configure(EntityTypeBuilder<InsiderFiling> builder)
   {
+    builder.ToTable("insider_filings");
+
     builder.HasKey(f => f.Id);
     builder.Property(f => f.Id).ValueGeneratedNever();
     
@@ -17,7 +19,7 @@ public class InsiderFilingConfiguration : IEntityTypeConfiguration<InsiderFiling
 
     builder.Property(f => f.InsiderCik).IsRequired().HasMaxLength(10);
     builder.Property(f => f.InsiderName).IsRequired().HasMaxLength(200);
-    builder.Property(f => f.OfficerTitle).HasMaxLength(20);
+    builder.Property(f => f.OfficerTitle).HasMaxLength(255);
 
     //no Filings collection on company. filings are queried 
     builder.HasOne<Company>().WithMany().HasForeignKey(f => f.CompanyId).OnDelete(DeleteBehavior.Cascade);

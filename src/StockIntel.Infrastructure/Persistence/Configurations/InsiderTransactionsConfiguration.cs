@@ -5,10 +5,12 @@ using StockIntel.Domain.Filings;
 
 namespace StockIntel.Infrastructure.Persistence.Configurations;
 
-public class InsiderTransactionsConfiguration : IEntityTypeConfiguration<InsiderTransactions>
+public class InsiderTransactionsConfiguration : IEntityTypeConfiguration<InsiderTransaction>
 {
-  public void Configure(EntityTypeBuilder<InsiderTransactions> builder)
+  public void Configure(EntityTypeBuilder<InsiderTransaction> builder)
   {
+    builder.ToTable("insider_transactions");
+
     builder.HasKey(t => t.Id);
     builder.Property(t => t.Id).ValueGeneratedNever();
     

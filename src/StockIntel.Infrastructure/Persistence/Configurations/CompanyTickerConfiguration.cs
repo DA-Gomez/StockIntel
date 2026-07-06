@@ -9,6 +9,8 @@ public class CompanyTickerConfiguration : IEntityTypeConfiguration<CompanyTicker
 {
   public void Configure(EntityTypeBuilder<CompanyTicker> builder)
   {
+    builder.ToTable("company_tickers");
+
     builder.HasKey(t => t.Id);
     builder.Property(t => t.Id).ValueGeneratedNever();
 

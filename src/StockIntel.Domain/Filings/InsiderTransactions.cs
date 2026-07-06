@@ -1,6 +1,6 @@
 namespace StockIntel.Domain.Filings;
 
-public class InsiderTransactions
+public class InsiderTransaction
 {
   public Guid Id { get; private set; }
   public Guid FilingId { get; private set; }
@@ -19,9 +19,9 @@ public class InsiderTransactions
   public bool IsOpenMarketPurchase => Code == "P" && IsAcquisition;
   public bool IsOpenMarketSale => Code == "S" && !IsAcquisition;
 
-  private InsiderTransactions() {}
+  private InsiderTransaction() {}
 
-  internal InsiderTransactions(
+  internal InsiderTransaction(
     Guid filingId,
     DateOnly transactionDate,
     string code, 

@@ -2,7 +2,7 @@ namespace StockIntel.Domain.Filings;
 
 public class InsiderFiling
 {
-  private readonly List<InsiderTransactions> _transactions = new();
+  private readonly List<InsiderTransaction> _transactions = new();
   
   public Guid Id { get; private set; }
   public Guid CompanyId { get; private set; }
@@ -20,7 +20,7 @@ public class InsiderFiling
   public string? OfficerTitle { get; private set; }
 
   public DateTime IngestedAt { get; private set; }
-  public IReadOnlyCollection<InsiderTransactions> Transactions => _transactions;
+  public IReadOnlyCollection<InsiderTransaction> Transactions => _transactions;
 
   private InsiderFiling() {} //ef core
 
@@ -80,7 +80,7 @@ public class InsiderFiling
     decimal? sharesOwnedAfter,
     bool isDirectOwnership)
   {
-    _transactions.Add(new InsiderTransactions(
+    _transactions.Add(new InsiderTransaction(
       Id, transactionDate, code, shares, pricePerShare,
       isAcquisition, sharesOwnedAfter, isDirectOwnership));
   }

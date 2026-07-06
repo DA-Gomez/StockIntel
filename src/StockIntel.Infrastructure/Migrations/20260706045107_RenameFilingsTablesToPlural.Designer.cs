@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StockIntel.Infrastructure.Persistence;
@@ -11,9 +12,11 @@ using StockIntel.Infrastructure.Persistence;
 namespace StockIntel.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260706045107_RenameFilingsTablesToPlural")]
+    partial class RenameFilingsTablesToPlural
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,8 +135,8 @@ namespace StockIntel.Infrastructure.Migrations
                         .HasColumnName("is_ten_percent_owner");
 
                     b.Property<string>("OfficerTitle")
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
                         .HasColumnName("officer_title");
 
                     b.HasKey("Id")

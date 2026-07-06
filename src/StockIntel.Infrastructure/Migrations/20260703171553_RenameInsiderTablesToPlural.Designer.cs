@@ -152,7 +152,7 @@ namespace StockIntel.Infrastructure.Migrations
                     b.ToTable("insider_filing", (string)null);
                 });
 
-            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderTransactions", b =>
+            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderTransaction", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
@@ -321,7 +321,7 @@ namespace StockIntel.Infrastructure.Migrations
                         .HasConstraintName("fk_insider_filing_company_company_id");
                 });
 
-            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderTransactions", b =>
+            modelBuilder.Entity("StockIntel.Domain.Filings.InsiderTransaction", b =>
                 {
                     b.HasOne("StockIntel.Domain.Filings.InsiderFiling", null)
                         .WithMany("Transactions")

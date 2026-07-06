@@ -25,4 +25,10 @@
     <ProjectReference Include="..\..\src\StockIntel.Infrastructure\StockIntel.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Filings\Fixtures\**\*.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

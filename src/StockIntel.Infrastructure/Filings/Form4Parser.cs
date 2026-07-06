@@ -29,7 +29,7 @@ internal static class Form4Parser
       // (position statements, no date, no code) we shuoldnt touch
       foreach (var tx in table.Elements("nonDerivativeTransaction"))
       {
-        var amounts = tx.Element("transactionsAmounts");
+        var amounts = tx.Element("transactionAmounts");
         transactions.Add(new ParsedForm4Transaction(
           TransactionDate:    DateOnly.Parse(Required(tx.Element("transactionDate"), "transactionDate"), CultureInfo.InvariantCulture),
           Code:               Required(tx.Element("transactionCoding")?.Element("transactionCode"), "transactionCode"),
