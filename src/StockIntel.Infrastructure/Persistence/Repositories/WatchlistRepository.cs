@@ -28,6 +28,16 @@ public class WatchlistRepository : IWatchlistRepository
     await _db.Watchlists.AddAsync(watchlist, cancellationToken);
   }
 
+  public async Task<IReadOnlyList<string>> GetAllWatchedSymbolsAsync(CancellationToken cancellationToken)
+  {
+    var tickers = await _db.Set<WatchlistItem>()
+      .Select(i => i.Ticker)
+      .Distinct()
+      .ToListAsync(cancellationToken);
+
+    return tickers.Select(t => t.Symbol).ToList();
+  }
+
 }
 
 //.Include() tells EF to eagerly load the items collection in the same query
