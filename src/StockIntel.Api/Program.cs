@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using StockIntel.Infrastructure;
 using StockIntel.Application;
 using Microsoft.EntityFrameworkCore;
+using StockIntel.Api.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,6 +63,14 @@ builder.Services
             ClockSkew = TimeSpan.Zero //defualt is 5
         };
     });
+
+builder.Services.AddOptions<IngestionOptions>()
+    .BindConfiguration(IngestionOptions.SectionName)
+    .Validate(o => o.Interval >= TimeSpan.FromMinutes(1),
+        "Ingestion: Interval must be at least 1 minute")
+    .ValidateOnStart();
+
+builder.Services.AddHostedService<InsiderFilingIngestionWorker>();
 
 var app = builder.Build();
 
