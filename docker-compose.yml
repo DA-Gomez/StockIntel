@@ -29,12 +29,10 @@ services: # each service is a container (postgres)
       Jwt__Audience: stockintel-clients
       Jwt__SigningKey: "this-is-a-development-only-signing-key-at-least-32-chars"
       Jwt__ExpirationMinutes: "60"
+      Edgar__UserAgent: "StockIntel/0.2 (diego.a.gomez.ruiz@example.com)"
+      Edgar__RequestsPerSecond: "5"
     ports:
       - "8080:8080"
-  
-  Edgar:
-    Edgar__UserAgent: "StockIntel/0.2 (diego.a.gomez.ruiz@example.com)"
-    Edgar__RequestsPerSecond: 5
 
 volumes:
   postgres_data:
