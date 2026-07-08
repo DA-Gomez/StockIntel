@@ -16,8 +16,8 @@ public class InsiderTransaction
   public bool IsDirectOwnership { get; private set; }
 
   // interpretation here, not in storage
-  public bool IsOpenMarketPurchase => Code == "P" && IsAcquisition;
-  public bool IsOpenMarketSale => Code == "S" && !IsAcquisition;
+  public bool IsOpenMarketPurchase => TransactionCodes.IsOpenMarketPurchase(Code, IsAcquisition);
+  public bool IsOpenMarketSale => TransactionCodes.IsOpenMarketSale(Code, IsAcquisition);
 
   private InsiderTransaction() {}
 
