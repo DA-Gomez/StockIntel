@@ -8,6 +8,7 @@ using StockIntel.Application.Watchlists.Create;
 using StockIntel.Application.Watchlists.List;
 using StockIntel.Application.Filings.IngestTickerFilings;
 using StockIntel.Application.Filings.IngestWatchedTickers;
+using StockIntel.Application.Filings.InsiderActivity;
 
 namespace StockIntel.Application;
 
@@ -29,6 +30,10 @@ public static class DependencyInjection
     services.AddScoped<ICommandHandler<IngestTickerFilingsCommand, int>, IngestTickerFilingsHandler>();
 
     services.AddScoped<ICommandHandler<IngestWatchedTickersCommand, IngestionRunSummary>, IngestWatchedTickersHandler>();
+
+    services.AddScoped<IQueryHandler<GetTickerInsiderActivityQuery, InsiderActivityPage>, GetTickerInsiderActivityHandler>();
+
+    services.AddScoped<IQueryHandler<GetWatchlistInsiderActivityQuery, InsiderActivityPage>, GetWatchlistInsiderActivityHandler>();
 
     return services;
   }
