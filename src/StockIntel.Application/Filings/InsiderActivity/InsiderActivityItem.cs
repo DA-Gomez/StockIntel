@@ -14,7 +14,7 @@ public record InsiderActivityItem(
   string ActivityType, // "Purchase" | "Sale" | "Other" (server side)
   decimal Shares,
   decimal? PricePerShare,
-  decimal? TotlaValue,  // shares * price, null when price unknown
+  decimal? TotalValue,  // shares * price, null when price unknown
   decimal? SharesOwnedAfter,
   DateOnly FilingDate,
   string AccessionNumber);

@@ -9,6 +9,7 @@ using StockIntel.Application.Abstractions.Persistence;
 using StockIntel.Application.Abstractions.Security;
 using StockIntel.Application.Abstractions.Filings;
 using StockIntelk.Infrastructure.Persistence.Repositories;
+using StockIntel.Infrastructure.Persistence.Readers;
 
 namespace StockIntel.Infrastructure;
 
@@ -37,6 +38,8 @@ public static class DependencyInjection
     
     services.AddScoped<ICompanyRepository, CompanyRepository>();
     services.AddScoped<IInsiderFilingRepository, InsiderFilingRepository>();
+
+    services.AddScoped<IInsiderActivityReader, InsiderActivityReader>();
 
     return services;
   }
